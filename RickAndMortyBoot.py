@@ -42,10 +42,8 @@ while(1):
                     filename.close
                     try:
                         s = api.update_status(m, s.id)
-                        time.sleep(120)
-                        break
-                    except:
-                        print ("Error sending the tweet")
-                time.sleep(150)
+                    except tweepy.TweepError as e:
+                        print e
+                    time.sleep(150)
     time.sleep(150)
 time.sleep(1800)
