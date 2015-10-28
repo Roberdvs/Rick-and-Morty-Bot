@@ -26,10 +26,10 @@ while(1):
         for i in t:
             if  i in s.text:
                 sn = s.user.screen_name
-                rdm=random.randint(0, len(quotes)) #Número aleatorio de quote
+                rdm=random.randint(0, len(quotes) -1) #Número aleatorio de quote
                 m = "@%s " % (sn) + quotes[rdm]
                 if len(m)>140:                      #Si user + mensaje supera 140 caracteres le damos otra oportunidad de frase.    
-                    rdm=random.randint(0, len(quotes)) #Número aleatorio de quote
+                    rdm=random.randint(0, len(quotes) -1) #Número aleatorio de quote
                     m = "@%s " % (sn) + quotes[rdm]
                 print (m)
                 
