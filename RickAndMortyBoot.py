@@ -44,7 +44,7 @@ while(1):
                         s = api.update_status(m, s.id)
                         time.sleep(120)
                         break
-                    except ValueError:
+                    except:
                         print ("Error sending the tweet")
                 time.sleep(150)
     time.sleep(150)
