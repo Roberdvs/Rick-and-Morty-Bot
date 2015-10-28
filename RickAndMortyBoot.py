@@ -17,11 +17,11 @@ auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth)
 while(1):
-    twt = api.search(q="Test Rick and Morty")     
+    twt = api.search(q="Rick and Morty")     
  
 #list of specific strings we want to check for in Tweets
-    t = ['Test test etsetse',
-        'Test Rick and Morty Test']
+    t = ['rick and morty',
+        'Rick and Morty']
     for s in twt:
         for i in t:
             if  i in s.text:
@@ -39,6 +39,13 @@ while(1):
                 if m not in historial:
                     filename=open('history.txt','a')
                     filename.write(m)
-                    s = api.update_status(m, s.id)
-                time.sleep(60)
-    time.sleep(1800)
+                    filename.close
+                    try:
+                        s = api.update_status(m, s.id)
+                        time.sleep(120)
+                        break
+                    except ValueError:
+                        print ("Error sending the tweet")
+                time.sleep(150)
+    time.sleep(150)
+time.sleep(1800)
