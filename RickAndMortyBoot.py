@@ -43,7 +43,7 @@ while(1):
                     try:
                         s = api.update_status(m, s.id)
                     except tweepy.TweepError as e:
-                        print e
+                        print (e)
                     time.sleep(150)
     time.sleep(150)
 time.sleep(1800)
