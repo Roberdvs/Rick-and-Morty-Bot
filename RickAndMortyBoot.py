@@ -2,8 +2,6 @@
 import tweepy, time, random
 #from our keys module (keys.py), import the keys dictionary
 from keys import keys
-## @BotRickAndMorty:tinyrick
-## rickmortybot@gmail.com:tinyrick
 CONSUMER_KEY = keys['consumer_key']
 CONSUMER_SECRET = keys['consumer_secret']
 ACCESS_TOKEN = keys['access_token']
