@@ -24,10 +24,12 @@ while(1):
         n=n+1
         sn = s.user.screen_name
         rdm=random.randint(0, len(quotes) -1) #Numero aleatorio de quote
-        m = "@%s " % (sn) + quotes[rdm]
-        if len(m)>140:                      #Si user + mensaje supera 140 caracteres le damos otra oportunidad de frase.
-            rdm=random.randint(0, len(quotes) -1) #Numero aleatorio de quote
+        try:
             m = "@%s " % (sn) + quotes[rdm]
+        if len(m)>140:                      #Si user + mensaje supera 140 caracteres le damos otra oportunidad de frase.
+            try:
+                rdm=random.randint(0, len(quotes) -1) #Numero aleatorio de quote
+                m = "@%s " % (sn) + quotes[rdm]
         print (m)
 
         filename=open('history.txt','r')
