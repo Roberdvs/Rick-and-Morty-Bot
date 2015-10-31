@@ -15,7 +15,8 @@ auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth)
 while(1):
-    twt = api.search(q="Rick and Morty", count=8, result_type="recent")
+    twt = api.search(q="Rick and Morty", count=1, result_type="recent")
+    time.sleep(10)
 #twt = tweepy.Cursor(api.search, q="Rick and Morty", count=8, result_type="recent", include_entities=True).items()
     n=0
     for s in twt:
@@ -24,12 +25,14 @@ while(1):
         rdm=random.randint(0, len(quotes) -1) #Numero aleatorio de quote
         try:
             m = "@%s " % (sn) + quotes[rdm]
-        if len(m)>140:                      #Si user + mensaje supera 140 caracteres le damos otra oportunidad de frase.
-            try:
+            if len(m)>140:                      #Si user + mensaje supera 140 caracteres le damos otra oportunidad de frase.
                 rdm=random.randint(0, len(quotes) -1) #Numero aleatorio de quote
                 m = "@%s " % (sn) + quotes[rdm]
-        print (m)
-
+            print (m)
+        except:
+            continue
+#            rdm=random.randint(0, len(quotes) -1) #Numero aleatorio de quote
+#            m = "@%s " % (sn) + quotes[rdm]
         filename=open('history.txt','r')
         historial=filename.read()
         filename.close()
@@ -41,6 +44,7 @@ while(1):
                 s = api.update_status(status=m, in_reply_to_status_id=s.id)
             except tweepy.TweepError as e:
                 print (e)
-            time.sleep(250)
+        time.sleep(500)
         if n==20:
             open('history.txt', 'w').close() #Borrar el contenido del fichero historial de usuarios
+
