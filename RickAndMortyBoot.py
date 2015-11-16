@@ -2,6 +2,8 @@
 import tweepy, time, random
 #from our keys module (keys.py), import the keys dictionary
 from keys import keys
+## @BotRickAndMorty:tinyrick
+## rickmortybot@gmail.com:tinyrick
 CONSUMER_KEY = keys['consumer_key']
 CONSUMER_SECRET = keys['consumer_secret']
 ACCESS_TOKEN = keys['access_token']
@@ -13,10 +15,10 @@ filename.close()
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
-api = tweepy.API(auth)
+api = tweepy.API(auth, proxy="proxy.server:3128")
 while(1):
     twt = api.search(q="Rick and Morty", count=1, result_type="recent")
-    time.sleep(10)
+    time.sleep(30)
 #twt = tweepy.Cursor(api.search, q="Rick and Morty", count=8, result_type="recent", include_entities=True).items()
     n=0
     for s in twt:
@@ -44,7 +46,6 @@ while(1):
                 s = api.update_status(status=m, in_reply_to_status_id=s.id)
             except tweepy.TweepError as e:
                 print (e)
-        time.sleep(500)
+        time.sleep(3630)
         if n==20:
             open('history.txt', 'w').close() #Borrar el contenido del fichero historial de usuarios
-
